@@ -16,20 +16,20 @@ public class AdjacencyMatrix {
 
         for (int i = 0; i < vertexCount; i++) {
             for (int j = 0; j < vertexCount; j++) {
-                this.adjacencyMatrix[i][j] = Edges.EDGES_NONE.value;
+                this.adjacencyMatrix[i][j] = false;
             }
         }
     }
 
-    public boolean adjacencyOfEdgesDoesExist(final int from, final int to) {
-        return this.adjacencyMatrix[from][to] != Edges.EDGES_NONE.value;
+    private boolean adjacencyOfEdgesDoesExist(final int from, final int to) {
+        return this.adjacencyMatrix[from][to] != false;
     }
 
-    public boolean vertexDoesExist(final int vertex) {
+    private boolean vertexDoesExist(final int vertex) {
         return (vertex >= 0 && vertex < this.getVertexCount());
     }
 
-    public boolean edgeDoesExist(final int from, final int to) {
+    private boolean edgeDoesExist(final int from, final int to) {
         if (vertexDoesExist(from) && vertexDoesExist(to))
             return adjacencyOfEdgesDoesExist(from, to);
         return false;
@@ -38,9 +38,9 @@ public class AdjacencyMatrix {
     public boolean addEdge(final int from, final int to) {
         if (vertexDoesExist(from) && vertexDoesExist(to)) {
             if (!edgeDoesExist(from, to)) {
-                this.adjacencyMatrix[from][to] = Edges.EDGES_EXIST.value;
+                this.adjacencyMatrix[from][to] = true;
                 if (!directed)
-                    this.adjacencyMatrix[to][from] = Edges.EDGES_EXIST.value;
+                    this.adjacencyMatrix[to][from] = true;
                 edgesCount++;
                 return true;
             }
@@ -51,9 +51,9 @@ public class AdjacencyMatrix {
      public boolean removeEdge(final int from, final int to) {
         if (vertexDoesExist(from) && vertexDoesExist(to)) {
             if (edgeDoesExist(from, to)) {
-                this.adjacencyMatrix[from][to] = Edges.EDGES_NONE.value;
+                this.adjacencyMatrix[from][to] = false;
                 if (!directed)
-                    this.adjacencyMatrix[to][from] = Edges.EDGES_NONE.value;
+                    this.adjacencyMatrix[to][from] = false;
                 edgesCount++;
                 return true;
             }
@@ -78,9 +78,8 @@ public class AdjacencyMatrix {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
 
-        System.out.print("\t\t"); // espaço antes do cabeçalho
+        System.out.print("\t\t");
 
-        // Imprime o cabeçalho (índices das colunas)
         for (int i = 0; i < vertexCount; i++) {
             System.out.printf("%d\t\t", i);
         }
