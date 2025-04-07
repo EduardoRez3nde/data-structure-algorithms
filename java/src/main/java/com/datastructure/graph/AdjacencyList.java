@@ -5,7 +5,7 @@ import java.util.*;
 public class AdjacencyList<T extends Comparable<T>> {
 
     private final Map<T, Set<T>> adjacencyList;
-    private boolean isDirected;
+    private final boolean isDirected;
 
     public AdjacencyList(final boolean isDirected) {
         this.adjacencyList = new HashMap<>();
@@ -29,13 +29,12 @@ public class AdjacencyList<T extends Comparable<T>> {
 
     public List<T> breadthFirstSearch(final T source) {
 
-        final List<T> visitedOrder = new ArrayList<>();
+        final List<T> visitOrder = new ArrayList<>();
 
-        if (!adjacencyList.containsKey(source)) {
-            System.out.println("Initial Vertice not found");
-            return visitedOrder;
+        if (!this.adjacencyList.containsKey(source)) {
+            System.out.println("Initial vertex not found");
+            return visitOrder;
         }
-
         final Queue<T> queue = new LinkedList<>();
         final Set<T> discovered = new HashSet<>();
 
@@ -44,7 +43,7 @@ public class AdjacencyList<T extends Comparable<T>> {
 
         while (!queue.isEmpty()) {
             final T vertex = queue.poll();
-            visitedOrder.add(vertex);
+            visitOrder.add(vertex);
 
             for (T neighbor : adjacencyList.get(vertex)) {
                 if (!discovered.contains(neighbor)) {
@@ -53,7 +52,10 @@ public class AdjacencyList<T extends Comparable<T>> {
                 }
             }
         }
-        return visitedOrder;
+        return visitOrder;
+    }
+    public void depthFirstSearchRecursive() {
+
     }
 
     public void printGraph() {

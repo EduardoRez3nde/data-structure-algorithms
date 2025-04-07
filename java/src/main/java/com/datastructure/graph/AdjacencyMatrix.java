@@ -1,5 +1,10 @@
 package com.datastructure.graph;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class AdjacencyMatrix {
 
     private final boolean[][] adjacencyMatrix;
@@ -22,7 +27,7 @@ public class AdjacencyMatrix {
     }
 
     private boolean adjacencyOfEdgesDoesExist(final int from, final int to) {
-        return this.adjacencyMatrix[from][to] != false;
+        return this.adjacencyMatrix[from][to];
     }
 
     private boolean vertexDoesExist(final int vertex) {
@@ -60,6 +65,23 @@ public class AdjacencyMatrix {
         }
         return false;
      }
+
+    public void depthFirstSearchRecursive(final int source) {
+        Map<Integer, List<Integer>> outputAndInput = new HashMap<>();
+        int time = 0;
+        depthFirstSearchRecursiveImpl(source, outputAndInput, time);
+    }
+
+    private void depthFirstSearchRecursiveImpl(int source, Map<Integer, List<Integer>> outputAndInput, int time) {
+        outputAndInput.put(source, new ArrayList<>());
+        outputAndInput.get(source).add(++time);
+        for (int i = 0; i < vertexCount; i++) {
+            if (adjacencyMatrix[source][i] && outputAndInput.get(source).get(i) == null) {
+                depthFirstSearchRecursiveImpl(i, outputAndInput, time);
+            }
+        }
+        outputAndInput.get(source + 1).add(++time);
+    }
 
     public boolean[][] getAdjacencyMatrix() {
         return adjacencyMatrix;

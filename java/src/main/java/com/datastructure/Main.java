@@ -12,7 +12,7 @@ public class Main {
         graph.addEdge(2, 3);
         graph.addEdge(2, 4);
 
-        List<Integer> vertices = graph.breadthFirstSearch(2);
+        List<Integer> vertices = graph.breadthFirstSearch(1);
 
         graph.printGraph();
         System.out.println();
