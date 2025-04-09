@@ -21,6 +21,8 @@ void insert(AdjacencyList* list, int source, int destination);
 
 DynamicArray* breadthFirstSearch(AdjacencyList* adjacencyList, int source);
 
+int** depthFirstSearch(AdjacencyList* adjacencyList, int source);
+
 Node* init_node(int destination, Node* next);
 
 #endif
