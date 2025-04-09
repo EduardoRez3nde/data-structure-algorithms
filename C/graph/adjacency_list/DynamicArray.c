@@ -17,7 +17,6 @@ int contains(DynamicArray* array, int value) {
     return 0; // não encontrado
 }
 
-
 void add(DynamicArray* arr, int value) {
     if (arr->size == arr->capacity) {
         // Dobrar capacidade se necessário
