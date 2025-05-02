@@ -1,19 +1,24 @@
 import sorting.Sort;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        final List<Integer> list = new ArrayList<>();
-        list.add(5);
-        list.add(2);
-        list.add(10);
-        list.add(1);
-        list.add(23);
-        Sort.insertionSort(list);
+        final List<Integer> original = Arrays.asList(5, 20, 1, 8, 2, 9);
 
-        list.forEach(x -> System.out.printf("%d ", x));
+        // Cópia para insertion sort
+        List<Integer> insertionList = new ArrayList<>(original);
+        Sort.insertionSort(insertionList);
+        System.out.print("Insertion Sort: ");
+        insertionList.forEach(x -> System.out.printf("%d ", x));
+        System.out.print("\n\n");
+
+        // Cópia para merge sort
+        List<Integer> mergeList = new ArrayList<>(original);
+        Sort.mergeSort(mergeList);
+        System.out.print("Merge Sort: ");
+        mergeList.forEach(x -> System.out.printf("%d ", x));
+        System.out.print("\n\n");
     }
 }
