@@ -1,6 +1,8 @@
 
 #include "Sort.h"
 
+// Melhor Caso: Ω(n)
+// Pior Caso: O(n²)
 void insertion_sort(int array[], int size) {
 
     for (int i = 1; i < size; i++) {

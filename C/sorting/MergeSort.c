@@ -2,6 +2,7 @@
 
 #include "Sort.h"
 
+// Melhor Caso e Pior: Θ(n log n) 
 void merge_sort(int array[], int start, int end) {
 
     if (start < end) {

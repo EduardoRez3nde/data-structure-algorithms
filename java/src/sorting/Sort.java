@@ -1,11 +1,14 @@
 package sorting;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Sort {
 
     public static <T extends Comparable<? super T>> void insertionSort(final List<T> list) {
+
+        System.out.printf("Lista não Ordenada: %s\n", list.toString());
 
         for (int i = 1; i < list.size(); i++) {
             final T key = list.get(i);
@@ -19,6 +22,7 @@ public class Sort {
     }
 
     public static <T extends Comparable<? super T>> void mergeSort(final List<T> list) {
+        System.out.printf("Lista não Ordenada: %s\n", list.toString());
         merge(list, 0, list.size() - 1);
     }
 
