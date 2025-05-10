@@ -5,7 +5,7 @@
 Node* init_node(int adj) {
 
     Node* newest = malloc(sizeof(Node));
-    newest->adfInfo = adj;
+    newest->vertex = adj;
     newest->weight = 0;
     newest->next = NULL;
 
@@ -55,7 +55,7 @@ void print_graph(Graph* graph) {
         printf("%d -> ", i);
 
         while (current != NULL) {
-            printf("%d -> ", current->adfInfo);
+            printf("%d -> ", current->vertex);
             current = current->next;
         }
         printf("NULL\n");

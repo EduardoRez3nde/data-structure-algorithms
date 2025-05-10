@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 typedef struct Node {
-    int adfInfo;
+    int vertex;
     int weight;
     struct Node* next;
 } Node;

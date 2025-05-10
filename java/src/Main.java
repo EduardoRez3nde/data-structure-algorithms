@@ -26,6 +26,6 @@ public class Main {
 
         // Binary Search Iterative
         Integer key = Search.binarySearchIterative(mergeList, 9);
-        System.out.printf("Position: %d", key);
+        System.out.printf("Position: %d ", key);
     }
 }
